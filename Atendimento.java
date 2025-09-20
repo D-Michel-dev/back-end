@@ -1,4 +1,4 @@
-import java.sql.Date;
+import java.util.Date;
 
 public class Atendimento {
     private Long id;
@@ -7,4 +7,4 @@ public class Atendimento {
     private Double valor;
     private String status;
     private String observacao;
-}
+}   
