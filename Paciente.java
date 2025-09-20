@@ -11,4 +11,6 @@ public class Paciente {
     private String endereco;
     private String cidade;
     private String estado;
+
+    
 }
