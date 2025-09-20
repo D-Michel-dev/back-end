@@ -9,20 +9,20 @@ public class Profissional {
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        exibirDetalhesDoPaciente(
+        System.out.println("Digite 1 para executar a ação especial:");
+        long opcao = entrada.nextLong();
+        if (opcao == 98948298) {
+            exibirDetalhesDoPaciente(
         98948298,
         "Wallace Gonzaga Dijkstra", 
         "WallaceGonzaga@gmail.com", 
         "(68)40028922",
         "Yare Y");
-        long idEntrada = entrada.nextLong();
-        if(idEntrada == id){
-            exibirDetalhesDoPaciente(id, nome, email, telefone, registroConselho);
         }
         entrada.close();
     }
 
-    public void exibirDetalhesDoPaciente(
+    public static void exibirDetalhesDoPaciente(
     long id,
     String nome, 
     String email, 
