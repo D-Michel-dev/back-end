@@ -1,19 +1,12 @@
-import java.util.Objects;
+import java.util.Scanner;
 
 public class Usuario {
-    public static void main(String[] args) {}
-        
-    
     private Long id;
     private String nomeCompleto;
     private String nomeUsuario;
     private String senha;
     private Boolean ativo;
     private String papel;
-
-    // --- Construtores (Opcional, mas recomendado) ---
-    public Usuario() {
-    }
 
     public Usuario(Long id, String nomeCompleto, String nomeUsuario, String senha, Boolean ativo, String papel) {
         this.id = id;
@@ -24,77 +17,46 @@ public class Usuario {
         this.papel = papel;
     }
 
-    // --- Getters e Setters ---
-    public Long getId() {
-        return id;
+    public Long getId() { return id; }
+    public String getNomeCompleto() { return nomeCompleto; }
+    public String getNomeUsuario() { return nomeUsuario; }
+    public String getSenha() { return senha; }
+    public Boolean getAtivo() { return ativo; }
+    public String getPapel() { return papel; }
+
+    static Usuario buscarUsuarioPorId(int id) {
+        if (id == 1234) {
+            return new Usuario(
+                1234L,
+                "Luis Henrique",
+                "luishenrique",
+                "senha123",
+                true,
+                "Administrador"
+            );
+        }
+        return null;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    static void exibirUsuario(Usuario user) {
+        if (user == null) {
+            System.out.println("Usuário não encontrado.");
+            return;
+        }
+        System.out.println("ID: " + user.getId());
+        System.out.println("Nome Completo: " + user.getNomeCompleto());
+        System.out.println("Nome de Usuário: " + user.getNomeUsuario());
+        System.out.println("Senha: " + user.getSenha());
+        System.out.println("Ativo: " + user.getAtivo());
+        System.out.println("Papel: " + user.getPapel());
     }
 
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
-    }
-
-    public String getNomeUsuario() {
-        return nomeUsuario;
-    }
-
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public Boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
-    }
-
-    public String getPapel() {
-        return papel;
-    }
-
-    public void setPapel(String papel) {
-        this.papel = papel;
-    }
-    
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id) && Objects.equals(nomeUsuario, usuario.nomeUsuario);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nomeUsuario);
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", nomeCompleto='" + nomeCompleto + '\'' +
-                ", nomeUsuario='" + nomeUsuario + '\'' +
-                ", ativo=" + ativo +
-                ", papel='" + papel + '\'' +
-                '}';
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("Digite o ID do usuário: ");
+        int input = entrada.nextInt();
+        Usuario user = buscarUsuarioPorId(input);
+        exibirUsuario(user);
+        entrada.close();
     }
 }
